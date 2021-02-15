@@ -1,0 +1,23 @@
+{
+  "name": "st-joseph-mail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbast100/st-joseph-mail.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbast100/st-joseph-mail/issues"
+  },
+  "homepage": "https://github.com/mbast100/st-joseph-mail#readme",
+  "dependencies": {
+    "aws-sdk": "^2.844.0"
+  }
+}
