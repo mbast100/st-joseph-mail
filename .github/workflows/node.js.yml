@@ -29,4 +29,5 @@ jobs:
    # - run: npm run build --if-present
    # - run: npm test
     - name: Deploy Lambda functions
-      run: sls deploy --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
+      run: serverless config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
+      run: serverless deploy
