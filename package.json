@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mbast100/st-joseph-mail#readme",
   "dependencies": {
-    "aws-sdk": "^2.844.0"
+    "aws-sdk": "^2.844.0",
+    "ejs": "^3.1.6"
   }
 }
