@@ -1,5 +1,7 @@
 const ResponseUtil = require("../utils/response")
-class MailHandler {  /**
+
+class MailHandler {  
+  /**
   * Creates an instance of MailHandler
   * @param {Object} injectionContext
   * @param {Object} injectionContext.responseUtil Instance of ResponseUtil
@@ -16,9 +18,7 @@ class MailHandler {  /**
     }
 
     return this.responseUtil.buildSuccessfulResponse({
-      message: 'Your email was successfully sent!',
       parameters: params,
-      event: event
     })
   }
 }
