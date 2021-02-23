@@ -1,30 +1,39 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# This workflow will do a clean install of node dependencies, build the source code, run tests and deploy (if pushing to main branch)
+# For more information see: - https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions 
+#                           - https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 
-name: Build and deployment to AWS lambda
+name: Build, Test and Deploy
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
   build:
-
+    name: Build and test
     runs-on: ubuntu-latest
-
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - name: Install dependencies
+    - name: Clean install service dependencies
+      run: npm ci
+
+  deploy:
+    name: Deploy
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: Install serverless
       run: npm install -g serverless
-   # - run: npm run build --if-present
-   # - run: npm test
     - name: Configure serverless
       run: serverless config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
     - name: Deploy Lambda functions
