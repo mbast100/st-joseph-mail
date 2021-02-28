@@ -19,6 +19,8 @@ jobs:
         node-version: 12.x
     - name: Clean install service dependencies
       run: npm ci
+    - name: Unit tests
+      run: npm run test
 
   deploy:
     name: Deploy

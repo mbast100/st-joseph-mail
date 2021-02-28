@@ -1,4 +1,4 @@
-const ResponseUtil = require("../utils/response")
+const ResponseUtil = require("../utils/responseUtil")
 
 class MailHandler {  
   /**
