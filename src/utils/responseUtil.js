@@ -9,7 +9,7 @@ class ResponseUtil {
    * @return response
    */
   buildSuccessfulResponse (data, statusCode = 200) {
-    let response = {
+    const response = {
       statusCode
     }
 

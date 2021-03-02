@@ -10,7 +10,7 @@ describe('ResponseUtil', () => {
   })
 
   describe('buildSuccessResponse', () => {
-    let statusCode, data
+    let data
 
     beforeEach(() => {
       data = { parameters: "email type" }
