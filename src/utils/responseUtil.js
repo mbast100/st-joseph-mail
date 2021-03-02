@@ -5,11 +5,12 @@ class ResponseUtil {
    /**
    * builds successful response object
    * @param {Object} data data object to process
+   * @param {*} statusCode error status code (optional)
    * @return response
    */
-  buildSuccessfulResponse (data) {
-    const response = {
-      statusCode: 200
+  buildSuccessfulResponse (data, statusCode = 200) {
+    let response = {
+      statusCode
     }
 
     if (data) {

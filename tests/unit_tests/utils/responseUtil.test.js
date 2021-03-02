@@ -13,19 +13,24 @@ describe('ResponseUtil', () => {
     let statusCode, data
 
     beforeEach(() => {
-      statusCode = 200
       data = { parameters: "email type" }
     })
 
-    it(`should return response with statusCode 200`, () => {
+    it("should return response with statusCode 200", () => {
       const res = responseUtil.buildSuccessfulResponse(data)
       expect(res.statusCode).equal(200)
       expect(res.body).deep.equal(JSON.stringify(data))
     })
-    it(`should return response with statusCode 200 and no data`, () => {
+    it("should return response with statusCode 200 and no data", () => {
       const res = responseUtil.buildSuccessfulResponse()
       expect(res.statusCode).equal(200)
-      expect(res).deep.equal({ statusCode })
+      expect(res).deep.equal({ statusCode: 200 })
+    })
+
+    it("should return with a different status code than the default", () => {
+      const res = responseUtil.buildSuccessfulResponse(data, 201)
+      expect(res.statusCode).equal(201)
+      expect(res.body).deep.equal(JSON.stringify(data))
     })
   })
 
